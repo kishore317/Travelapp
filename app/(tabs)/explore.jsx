@@ -1,9 +1,20 @@
-import { Stack } from 'expo-router/stack';
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-export default function Layout() {
+const Explore = () => {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <View style={styles.container}>
+      <Text>Explore Screen</Text>
+    </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});
+
+export default Explore;

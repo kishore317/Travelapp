@@ -1,13 +1,14 @@
-import { View, Text, StatusBar, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
-import explore from '@/app/(tabs)/explore'
+import { View, Text, StatusBar, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { useRouter } from 'expo-router';
+
 const images = require("../../assets/images/wallpaper.png"); // Import background image
 
-const Index = ({navigation}) => {
+const Index = () => {
+  const router = useRouter();
   return (
     <ImageBackground source={images} style={styles.backgroundImage}>
-      <TouchableOpacity style={styles.roundedButton} onPress={()=>navigation.navigate('explore')}>
+      <TouchableOpacity style={styles.roundedButton} onPress={() => router.push('/(tabs)/explore')}>
         <Text style={styles.buttonText}>Start Travelling</Text>
       </TouchableOpacity>
     </ImageBackground>
@@ -35,6 +36,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   }
-})
+});
 
 export default Index;
