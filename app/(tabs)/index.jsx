@@ -8,7 +8,7 @@ const Index = () => {
   const router = useRouter();
   return (
     <ImageBackground source={images} style={styles.backgroundImage}>
-      <TouchableOpacity style={styles.roundedButton} onPress={() => router.push('/(tabs)/explore')}>
+      <TouchableOpacity style={styles.roundedButton} onPress={() => router.push('/login/signIn')}>
         <Text style={styles.buttonText}>Start Travelling</Text>
       </TouchableOpacity>
     </ImageBackground>
