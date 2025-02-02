@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-
+import { View, Text, TouchableOpacity, StyleSheet, Button } from "react-native";
 const ProfileScreen = () => {
   const handleLogout = () => {
     console.log("User logged out");
@@ -13,6 +12,9 @@ const ProfileScreen = () => {
       <Text style={styles.text}>john.doe@example.com</Text>
       <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
         <Text style={styles.logoutText}>Log Out</Text>
+        <View>
+        <Text style={styles.logoutText} onPress={()=>router.push('/(tabs)/explore')}>start travelling</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );

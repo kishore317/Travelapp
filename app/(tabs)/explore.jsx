@@ -20,24 +20,26 @@ const trips =[
 ];
 const Item = ({name,destination,date}) =>{
   return(
-    <View>
-      <Text>{name}</Text>
-      <text>{destination}-{date}</text>
+    <TouchableOpacity>
+    <View style={styles.tripItem}>
+      <Text style={styles.tripName}>{name}</Text>
+      <Text style={styles.tripDestination}>{destination}-{date}</Text>
     </View>
+    </TouchableOpacity>
   );
 };
 const Explore = () => {
   const router=useRouter();
   return (
     <View style={styles.container}>
-      <Text>Trip List</Text>
+      <Text style={styles.header}>Trip List</Text>
       <FlatList
       data={trips}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id} showsVerticalScrollIndicator={false}
       renderItem={({item})=><Item name={item.name} destination={item.destination}  date = {item.date}/>}
       />
       <TouchableOpacity onPress={()=>router.push('/tripscreen/tripScreen')}>
-        <Text>Add your Trip</Text>
+        <Text style={styles.roundedButton}>Add your Trip</Text>
       </TouchableOpacity>
     </View>
     
@@ -47,9 +49,46 @@ const Explore = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    padding:16,
+    backgroundColor:'#f5f5f5',
+  },
+  header:{
+    fontSize:20,
+    fontWeight:'bold',
+    testAlign:'center',
+    marginBottom:10,
+  },
+  tripItem:{
+    padding:16,
+    marginBottom:10,
+    borderRadius:8,
+    shadowColor:'#000',
+    shadowOpacity:0.1,
+    shadowOffset:{width:0,height:2},
+    shadowRadius:4,
+    elevation:3,
+    borderWidth: 1,
+    borderColor: '#cccccc'
+  },
+  tripName:{
+    fontSize:18,
+    fontWeight:'bold',
+    color:'#333',
+  },
+  tripDetails:{
+    fontSize:14,
+    color:'#666',
+    marginTop:4,
+  },
+  roundedButton: {
+    backgroundColor: 'pink',
+    paddingVertical: 12,
+    paddingHorizontal: 85,
+    borderRadius: 25,
+    marginBottom: 50,
     alignItems: 'center',
-  }
+    textAlign:'center',
+  },
 });
 
 export default Explore;
