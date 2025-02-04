@@ -8,14 +8,18 @@ const Item = ({ id, name, destination, date,latitude,longitude }) => {
 
   return (
     <View style={styles.card}>
-    <TouchableOpacity
-      onPress={() =>
-        router.push({
-          pathname: "/tripscreen/tripdetailsScreen",
-          params: { id, name, destination, date,latitude,longitude },
-        })
-      }
-    >
+  <TouchableOpacity
+    onPress={() => {
+      // Log the parameters
+      console.log({ id, name, destination, date, latitude, longitude });
+
+      // Navigate to the new screen
+      router.push({
+        pathname: "/tripscreen/tripdetailsScreen",
+        params: { id, name, destination, date, latitude, longitude },
+      });
+    }}
+  >
       <View style={styles.row}>
       <View style={styles.tripItem}>
         <Text style={styles.tripName}>{name}</Text>
@@ -38,7 +42,12 @@ const Explore = () => {
         keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <Item id={item.id} name={item.name} destination={item.destination} date={item.date} />
+          <Item id={item.id} 
+          name={item.name} 
+          destination={item.destination} 
+          date={item.date}
+          latitude={item.latitude}
+          longitude={item.longitude} />
         )}
       />
       <TouchableOpacity onPress={() => router.push('/tripscreen/tripScreen')}>
@@ -59,7 +68,7 @@ const styles = StyleSheet.create({
   header:{
     fontSize:20,
     fontWeight:'bold',
-    testAlign:'center',
+    textAlign:'center',
     marginBottom:10,
   },
   // tripItem:{

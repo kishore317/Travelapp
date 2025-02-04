@@ -17,7 +17,7 @@ const ProfileScreen = () => {
         <Text style={styles.text}>Traveller23@example.com</Text>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("explore")}
+          onPress={() => navigation.navigate("explore")}  //working with tab navigation
           style={styles.button}
         >
           <Text style={styles.buttonText}>Start Travelling</Text>
@@ -26,7 +26,7 @@ const ProfileScreen = () => {
         <TouchableOpacity
           onPress={() => {
             handleLogout();
-            navigation.navigate("index");
+            navigation.navigate("index");  //working with tab navigation
           }}
           style={styles.logoutButton}
         >
