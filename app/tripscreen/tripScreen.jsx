@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-
+    marginHorizontal:16,
+    marginVertical:8,
+    backgroundColor:'fff',
   },
   textInput:{
     width: '80%',

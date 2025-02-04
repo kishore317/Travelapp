@@ -12,9 +12,11 @@ const Signup = () => {
     <Button title='Submit' onPress={()=> router.push('/(tabs)/profile')} />
     <View>
       <Text style={styles.input}>Don't have an account</Text>
+      <View>
       <Pressable onPress={()=>router.push('/login/signUp')}>
         <Text>Create Account</Text>
         </Pressable>
+        </View>
     </View>
     </View>
   );
@@ -49,5 +51,6 @@ const styles = StyleSheet.create({
         color: '#007bff',
         fontSize: 16,
         fontWeight: 'bold',
+        textAlign:'left',
       },
 });
