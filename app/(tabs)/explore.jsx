@@ -38,7 +38,9 @@ const Explore = () => {
         )}
       />
       <TouchableOpacity onPress={() => router.push('/tripscreen/tripScreen')}>
-        <Text style={styles.roundedButton}>Add your Trip</Text>
+        <View>
+        <Text style={[styles.floatingButton,styles.buttontext,styles.textcenter,styles.textsize]}>Add your Trip</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -78,15 +80,19 @@ const styles = StyleSheet.create({
     color:'#666',
     marginTop:4,
   },
-  roundedButton: {
-    backgroundColor: 'pink',
-    paddingVertical: 12,
-    paddingHorizontal: 85,
-    borderRadius: 25,
-    marginBottom: 50,
-    alignItems: 'center',
-    textAlign:'center',
-  },
+  floatingButton: {
+    flex: 1,
+    backgroundColor: "pink",
+    padding: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 110,
+    height: 40,
+    borderRadius: 10,
+    position: "absolute",
+    bottom: 40,
+    right: 30,
+    },
 });
 
 export default Explore;

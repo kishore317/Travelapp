@@ -8,7 +8,7 @@ export default function tripdetailsScreen(){
     const router = useRouter();
     const {name,destination,date,latitude,longitude} = useLocalSearchParams();
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
         <Text style={styles.title}>{name}</Text>
         <Text>{destination}</Text>
         <Text>{date}</Text>
