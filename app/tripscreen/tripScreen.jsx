@@ -1,44 +1,69 @@
-import { StyleSheet, Text, View,TextInput,TouchableOpacity } from 'react-native'
-import React from 'react'
-import { useRouter } from 'expo-router'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { useRouter } from 'expo-router';
+import { trips } from '@/constants/trips';
 
-const tripScreen = () => {
-    const router=useRouter();
+const TripScreen = () => {
+  const router = useRouter();
+
+  const [tripName, setTripName] = useState("");
+  const [destination, setDestination] = useState("");
+  const [date, setDate] = useState("");
+
+  const handleSave = () => {
+    if (tripName && destination && date) {
+      const newTrip = { id: trips.length + 1, name: tripName, destination, date }; // Generate new ID
+      trips.push(newTrip); // Directly modify the trips array
+      router.back(); // Navigate back to explore screen
+    }
+  };
+
   return (
-    <View>
+    <View style={styles.overall}>
       <Text style={styles.header}>TripScreen</Text>
 
       <View style={styles.container}>
-        <TextInput placeholder='TripName' style={styles.textInput}/>
-        <TextInput placeholder='Destination' style={styles.textInput}/>
-        <TextInput placeholder='Date' style={styles.textInput}/>
-        <TouchableOpacity onPress={()=>router.push('/(tabs)/explore')} >
-            <Text style={styles.save}>Save</Text>
+        <TextInput placeholder="Trip Name" value={tripName} onChangeText={setTripName} style={styles.textInput} />
+        <TextInput placeholder="Destination" value={destination} onChangeText={setDestination} style={styles.textInput} />
+        <TextInput placeholder="Date" value={date} onChangeText={setDate} style={styles.textInput} />
+        <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
+          <Text style={styles.saveText}>Save</Text>
         </TouchableOpacity>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default tripScreen
+export default TripScreen;
 
 const styles = StyleSheet.create({
-  header:{
-    marginTop:190,
-    fontSize:16,
-    textAlign:'center',
-    fontWeight:'bold',
+  overall: {
+    flex: 1, // Ensures the background color covers the full screen
+    backgroundColor: '#005A9C',
+    justifyContent: 'center', // Centers the content vertically
+    alignItems: 'center', // Centers the content horizontally
   },
-  container:{
-    justifyContent: 'center',
-    alignItems: 'center',
+  header: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 20,
+  },
+  container: {
+    width: '90%',
+    backgroundColor: 'white',
+    borderRadius: 10,
     padding: 20,
-    marginHorizontal:16,
-    marginVertical:8,
-    backgroundColor:'fff',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5, // Adds shadow for Android
   },
-  textInput:{
-    width: '80%',
+  textInput: {
+    width: '100%',
     height: 40,
     borderColor: '#ccc',
     borderWidth: 1,
@@ -47,11 +72,18 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     backgroundColor: '#fff',
   },
-  save:{
+  saveButton: {
     marginTop: 20,
-    padding: 10,
-    backgroundColor: "red",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: 'red',
     borderRadius: 5,
-    textAlign:'center',
-  }
-})
+    width: '100%',
+    alignItems: 'center',
+  },
+  saveText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

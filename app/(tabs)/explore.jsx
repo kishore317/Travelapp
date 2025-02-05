@@ -1,10 +1,8 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity,ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { trips } from '@/constants/trips';
-
-
-console.log("Trips data:", trips);  // Debugging
+import { useState,useEffect } from 'react';
 
 const Item = ({ id, name, destination, date,latitude,longitude }) => {
   const router = useRouter(); // Use useRouter() instead of useNavigation()
@@ -31,7 +29,13 @@ const Item = ({ id, name, destination, date,latitude,longitude }) => {
 };
 
 const Explore = () => {
+  const [tripList , setTripList] = useState([...trips]);
   const router = useRouter(); // Use router from expo-router
+
+  //refresh the trip list when returning to the screen
+  useEffect(() => {
+    setTripList([...trips]);
+  }, [trips.length]);
 
   return (
     <View style={styles.container}>
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding:16,
-    backgroundColor:'#f5f5f5',
+    backgroundColor:'#E0F7FA',
   },
   header:{
     fontSize:20,
@@ -71,18 +75,6 @@ const styles = StyleSheet.create({
     textAlign:'center',
     marginBottom:10,
   },
-  // tripItem:{
-  //   padding:16,
-  //   marginBottom:10,
-  //   borderRadius:8,
-  //   shadowColor:'#000',
-  //   shadowOpacity:0.1,
-  //   shadowOffset:{width:0,height:2},
-  //   shadowRadius:4,
-  //   elevation:3,
-  //   borderWidth: 1,
-  //   borderColor: '#cccccc'
-  // },
   tripName:{
     fontSize:18,
     fontWeight:'bold',
@@ -95,7 +87,7 @@ const styles = StyleSheet.create({
   },
   floatingButton: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#005A9C",
     padding: 10,
     justifyContent: "center",
     alignItems: "center",

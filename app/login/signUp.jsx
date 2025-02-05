@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f8f9fa', // Light background
+    backgroundColor: '#87CEEB', // Light background
     padding: 20,
   },
   textInput: {

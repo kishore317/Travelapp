@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-
 import { useRouter } from "expo-router";
 
 const ProfileScreen = () => {
@@ -18,7 +17,7 @@ const ProfileScreen = () => {
         <Text style={styles.text}>Traveller23@example.com</Text>
 
         <TouchableOpacity
-          onPress={() => router.push("/(tabs)/explore")}  
+          onPress={() => router.push("/(tabs)/explore")}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Start Travelling</Text>
@@ -43,10 +42,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center", // Centers vertically
     alignItems: "center", // Centers horizontally
-    backgroundColor: "#f5f5f5",
+    backgroundColor:"#87CEEB",
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: "#F5DEB3",
     padding: 20,
     width: "90%",
     borderRadius: 10,

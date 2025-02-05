@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View ,TextInput,Button,Pressable} from 'react-native'
 import React from 'react'
 import { useRouter } from 'expo-router';
+import { preventAutoHideAsync } from 'expo-router/build/utils/splash';
 
 const Signup = () => {
   const router=useRouter();
@@ -13,7 +14,7 @@ const Signup = () => {
     <View>
       <Text style={styles.input}>Don't have an account</Text>
       <View>
-      <Pressable onPress={()=>router.push('/login/signUp')}>
+      <Pressable  onPress={()=>router.push('/login/signUp')} >
         <Text>Create Account</Text>
         </Pressable>
         </View>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f8f9fa', // Light background
+        backgroundColor: '#87CEEB',
         padding: 20,
       },
       textInput: {
