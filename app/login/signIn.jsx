@@ -11,14 +11,12 @@ const Signup = () => {
     <TextInput placeholder='Email' style={styles.textInput} />
     <TextInput placeholder='Password'secureTextEntry={true} style={styles.textInput} />
     <Button title='Submit' onPress={()=> router.push('/(tabs)/profile')} />
-    <View>
+    <View style={styles.row}>
       <Text style={styles.input}>Don't have an account</Text>
-      <View>
       <Pressable  onPress={()=>router.push('/login/signUp')} >
-        <Text>Create Account</Text>
+        <Text style={styles.pressableText}>Create Account</Text>
         </Pressable>
         </View>
-    </View>
     </View>
   );
 };
@@ -43,8 +41,12 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: '#fff',
       },
+      row:{
+        flexDirection:'row',
+        alignItems:'center',
+        marginTop:10,
+      },
       input: {
-        marginTop: 10,
         fontSize: 14,
         color: '#555',
       },
@@ -52,6 +54,5 @@ const styles = StyleSheet.create({
         color: '#007bff',
         fontSize: 16,
         fontWeight: 'bold',
-        textAlign:'left',
       },
 });

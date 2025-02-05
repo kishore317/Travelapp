@@ -35,8 +35,8 @@ if (!mapReady) return null;
 
                     latitude: lat,
                     longitude: lon,
-                    latitudeDelta: 0.005,
-                    longitudeDelta: 0.005,
+                    latitudeDelta: 0.2,
+                    longitudeDelta: 0.2,
                 }}
             >
                 <Marker

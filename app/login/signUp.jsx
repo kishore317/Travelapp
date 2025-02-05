@@ -1,27 +1,27 @@
-import { StyleSheet, Text, View ,TextInput,Button,Pressable} from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, TextInput, Button, Pressable } from 'react-native';
+import React from 'react';
 import { useRouter } from 'expo-router';
 
 const Signup = () => {
-  const router=useRouter();
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Text>Create your account</Text>
-    <TextInput placeholder='Name' style={styles.textInput} />
-    <TextInput placeholder='Email' style={styles.textInput} />
-    <TextInput placeholder='Password'secureTextEntry={true} style={styles.textInput} />
-    <Button title='Submit' />
-    <View>
-      <Text style={styles.input}>Already have an account</Text>
-      <Pressable onPress={()=>router.push('/login/signIn')}>
-        <Text>Log In</Text>
+      <TextInput placeholder="Name" style={styles.textInput} />
+      <TextInput placeholder="Email" style={styles.textInput} />
+      <TextInput placeholder="Password" secureTextEntry={true} style={styles.textInput} />
+      <Button title="Submit" />
+      <View style={styles.row}>
+        <Text style={styles.input}>Already have an account? </Text>
+        <Pressable onPress={() => router.push('/login/signIn')}>
+          <Text style={styles.pressableText}>Log In</Text>
         </Pressable>
-    </View>
+      </View>
     </View>
   );
 };
 
-export default Signup
+export default Signup;
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#87CEEB', // Light background
     padding: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
   },
   textInput: {
     width: '80%',
@@ -42,15 +47,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   input: {
-    marginTop: 10,
     fontSize: 14,
     color: '#555',
   },
   pressableText: {
     color: '#007bff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
-
-
-  });
+});
