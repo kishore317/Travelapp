@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { useNavigation } from "expo-router";
+
+import { useRouter } from "expo-router";
 
 const ProfileScreen = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const handleLogout = () => {
     console.log("User logged out");
@@ -17,7 +18,7 @@ const ProfileScreen = () => {
         <Text style={styles.text}>Traveller23@example.com</Text>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("explore")}  //working with tab navigation
+          onPress={() => router.push("/(tabs)/explore")}  
           style={styles.button}
         >
           <Text style={styles.buttonText}>Start Travelling</Text>
@@ -25,8 +26,8 @@ const ProfileScreen = () => {
 
         <TouchableOpacity
           onPress={() => {
+            router.push("/(tabs)");
             handleLogout();
-            navigation.navigate("index");  //working with tab navigation
           }}
           style={styles.logoutButton}
         >

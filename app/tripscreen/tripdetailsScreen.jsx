@@ -8,10 +8,6 @@ export default function tripdetailsScreen() {
     const router = useRouter();
     const { name, destination, date, latitude, longitude } = useLocalSearchParams();
 
-    useEffect(() => {
-        console.log("Received latitude:", latitude, "Received longitude:", longitude);
-    }, [latitude, longitude]);
-
     // Parse latitude and longitude to ensure they are numbers
     const lat = parseFloat(latitude) || 12.9716;  // Default to Bangalore if invalid
     const lon = parseFloat(longitude) || 77.5946;  // Default to Bangalore if invalid
@@ -22,9 +18,6 @@ useEffect(() => {
 }, [lat, lon]);
 
 if (!mapReady) return null;
-
-    console.log("Parsed latitude:", lat, "Parsed longitude:", lon);  // Check if parsing is correct
-    console.log("Rendering map with lat:", lat, "lon:", lon);
 
     return (
         <View style={styles.container}>

@@ -1,7 +1,10 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity,ActivityIndicator } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { trips } from '@/constants/trips';
+
+
+console.log("Trips data:", trips);  // Debugging
 
 const Item = ({ id, name, destination, date,latitude,longitude }) => {
   const router = useRouter(); // Use useRouter() instead of useNavigation()
@@ -10,10 +13,6 @@ const Item = ({ id, name, destination, date,latitude,longitude }) => {
     <View style={styles.card}>
   <TouchableOpacity
     onPress={() => {
-      // Log the parameters
-      console.log({ id, name, destination, date, latitude, longitude });
-
-      // Navigate to the new screen
       router.push({
         pathname: "/tripscreen/tripdetailsScreen",
         params: { id, name, destination, date, latitude, longitude },
@@ -37,17 +36,18 @@ const Explore = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Trip List</Text>
+      
       <FlatList
         data={trips}
-        keyExtractor={(item) => item.id.toString()}
-        showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => (item.id ? item.id.toString() : index.toString())}
         renderItem={({ item }) => (
-          <Item id={item.id} 
-          name={item.name} 
-          destination={item.destination} 
+          <Item id={item.id}
+          name={item.name}
+          destination={item.destination}
           date={item.date}
           latitude={item.latitude}
-          longitude={item.longitude} />
+          longitude={item.longitude}
+          showsVerticalScrollIndicator={false} />
         )}
       />
       <TouchableOpacity onPress={() => router.push('/tripscreen/tripScreen')}>
