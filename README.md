@@ -1,54 +1,53 @@
-<<<<<<< HEAD
-# Travelapp
-=======
-# Welcome to your Expo app 👋
+Travel Companion App (React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple Travel Companion App built with React Native that includes user authentication (Sign In, Sign Up, Logout) and a Profile Page.
 
-## Get started
+📌 Features
 
-1. Install dependencies
+✅ User Authentication (Sign In, Sign Up, Logout) Only UI but you can navigate
 
-   ```bash
-   npm install
-   ```
+✅ Profile Page (Displays user info)
 
-2. Start the app
+✅ Navigation between screens using React Navigation
 
-   ```bash
-    npx expo start
-   ```
+✅ You can add your Trip using states
 
-In the output, you'll find options to open the app in a
+🚀 Installation & Setup
+git clone
+https://github.com/your-repo/travel-companion-app.git
+cd travel-companion-app
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Install Dependencies
+npm install
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Run the App
+npx expo start
 
-## Get a fresh project
+How It Works
 
-When you're ready, run:
+Front Screen → User can see a beautiful page and start their travel.
 
-```bash
-npm run reset-project
-```
+Explore Screen → User an view all the trips with destination map location.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Sign In Page → Users enter email/password to log in.(without this also press login to navigate to the next screen).
 
-## Learn more
+Profile Page → Displays the user's name & email.(not disply real data only a sample example data is shown)
 
-To learn more about developing your project with Expo, look at the following resources:
+Logout Button → Logs out the user(UI) and redirects to the Front Screen In page.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Tech Stack
 
-## Join the community
+⚛️ React Native (Frontend UI)
 
-Join our community of developers creating universal apps.
+📱 Expo (Development & Testing)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
->>>>>>> 6d831c8 (Initial commit)
+🚀 React Navigation (Screen Navigation)
+
+Dependencies
+
+"dependencies": {
+"react": "latest",
+"react-native": "latest",
+"react-navigation": "latest",
+"react-navigation-stack": "latest"
+}
