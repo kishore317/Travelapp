@@ -1,41 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
+import { AuthContext } from "../login/AuthContext";
 
 const ProfileScreen = () => {
+  const { user, logout } = useContext(AuthContext);
   const router = useRouter();
 
-  const handleLogout = () => {
-    console.log("User logged out");
+  const handleLogout = async () => {
+    await logout();
+    router.replace("/(tabs)");
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.title}>Profile</Text>
-        <Text style={styles.text}>Traveller</Text>
-        <Text style={styles.text}>Traveller23@example.com</Text>
+        <Text style={styles.text}>{user?.username}</Text>
 
-        <TouchableOpacity
-          onPress={() => router.push("/(tabs)/explore")}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Start Travelling</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {
-            router.push("/(tabs)");
-            handleLogout();
-          }}
-          style={styles.logoutButton}
-        >
+        <TouchableOpacity onPress={handleLogout} style={styles.button}>
           <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

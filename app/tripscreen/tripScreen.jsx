@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router';
-import { trips } from '@/constants/trips';
+import { trips } from "../../constants/trips";
+
 
 const TripScreen = () => {
   const router = useRouter();

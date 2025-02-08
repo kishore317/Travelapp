@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
-import { trips } from '@/constants/trips';
+import { trips } from '../../constants/trips';
 import { useState,useEffect } from 'react';
+
 
 const Item = ({ id, name, destination, date,latitude,longitude }) => {
   const router = useRouter(); // Use useRouter() instead of useNavigation()

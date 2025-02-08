@@ -1,16 +1,25 @@
 import { StyleSheet, Text, View, TextInput, Button, Pressable } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 
-const Signup = () => {
+export default function  Signup() {
   const router = useRouter();
+  const [name,setName] = useState("");
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
+  const handleSignup = () => {
+    alert("Account created successfully");
+    router.replace("/login/signIn");
+  };
   return (
     <View style={styles.container}>
       <Text>Create your account</Text>
-      <TextInput placeholder="Name" style={styles.textInput} />
-      <TextInput placeholder="Email" style={styles.textInput} />
-      <TextInput placeholder="Password" secureTextEntry={true} style={styles.textInput} />
-      <Button title="Submit" />
+      <TextInput placeholder="Name"   onChangeText={setName} style={styles.textInput} />
+      <TextInput placeholder="Email"   onChangeText={setEmail} style={styles.textInput} />
+      <TextInput placeholder="Password" secureTextEntry onChangeText={setPassword} style={styles.textInput} />
+      <Button title="Submit"  onPress={handleSignup}/>
       <View style={styles.row}>
         <Text style={styles.input}>Already have an account? </Text>
         <Pressable onPress={() => router.push('/login/signIn')}>
@@ -21,7 +30,6 @@ const Signup = () => {
   );
 };
 
-export default Signup;
 
 const styles = StyleSheet.create({
   container: {

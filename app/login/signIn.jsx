@@ -1,27 +1,47 @@
-import { StyleSheet, Text, View ,TextInput,Button,Pressable} from 'react-native'
-import React from 'react'
-import { useRouter } from 'expo-router';
-import { preventAutoHideAsync } from 'expo-router/build/utils/splash';
+import React, { useState, useContext } from "react";
+import { View, Text, TextInput, Button, Pressable,StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
+import { AuthContext } from "../login/AuthContext";
 
-const Signup = () => {
-  const router=useRouter();
+export default function SignIn() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
+  const router = useRouter();
+
+  const handleLogin = async () => {
+    await login(username, password);
+    router.replace('/(tabs)/explore');
+  };
+
   return (
-    <View style={styles.container} >
-      <Text>LogIn</Text>
-    <TextInput placeholder='Email' style={styles.textInput} />
-    <TextInput placeholder='Password'secureTextEntry={true} style={styles.textInput} />
-    <Button title='Submit' onPress={()=> router.push('/(tabs)/profile')} />
-    <View style={styles.row}>
-      <Text style={styles.input}>Don't have an account</Text>
-      <Pressable  onPress={()=>router.push('/login/signUp')} >
-        <Text style={styles.pressableText}>Create Account</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Log In</Text>
+      <TextInput
+        placeholder="Username"
+        style={styles.textInput}
+        value={username}
+        onChangeText={setUsername}
+      />
+      <TextInput
+        placeholder="Password"
+        secureTextEntry
+        style={styles.textInput}
+        value={password}
+        onChangeText={setPassword}
+      />
+      <Button title="Submit" onPress={handleLogin} />
+      <View style={styles.row}>
+        <Text>Don't have an account?</Text>
+        <Pressable onPress={() => router.push('/login/signUp')}>
+          <Text>Create Account</Text>
         </Pressable>
-        </View>
+      </View>
     </View>
   );
-};
+}
 
-export default Signup
+
 
 const styles = StyleSheet.create({
     container: {
