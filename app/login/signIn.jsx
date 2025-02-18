@@ -11,7 +11,7 @@ export default function SignIn() {
 
   const handleLogin = async () => {
     await login(username, password);
-    router.replace('/(tabs)/explore');
+    router.replace('/(tabs)/profile');
   };
 
   return (

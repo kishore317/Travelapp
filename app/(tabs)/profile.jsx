@@ -7,7 +7,13 @@ const ProfileScreen = () => {
   const { user, logout } = useContext(AuthContext);
   const router = useRouter();
 
+  const handleStartTravelling = () => {
+    console.log("Navigating to explore...");
+    router.replace("/(tabs)/explore");
+  };
+
   const handleLogout = async () => {
+    console.log("Logging out...");
     await logout();
     router.replace("/(tabs)");
   };
@@ -18,6 +24,12 @@ const ProfileScreen = () => {
         <Text style={styles.title}>Profile</Text>
         <Text style={styles.text}>{user?.username}</Text>
 
+      
+        <TouchableOpacity onPress={handleStartTravelling} style={styles.button}>
+          <Text style={styles.buttonText}>Start Travelling</Text>
+        </TouchableOpacity>
+
+       
         <TouchableOpacity onPress={handleLogout} style={styles.button}>
           <Text style={styles.buttonText}>Log Out</Text>
         </TouchableOpacity>
